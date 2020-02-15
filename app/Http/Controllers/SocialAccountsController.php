@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Sheng\Users\SocialAccountsRepository;
 use App\Sheng\Users\UsersRepository;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -38,24 +39,24 @@ class SocialAccountsController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-        $providerUser = Socialite::driver($provider)->user();
-
-        if (! $providerUser) {
-            return redirect('login');
+        try {
+            $providerUser = Socialite::driver($provider)->user();
+        } catch (Exception $e) {
+            return  redirect()->route('login.social', $provider);
         }
 
         $socialAccount = $this->socialAccountsRepository->getSocialAccountByUserAndProvider($providerUser, $provider);
 
         if ($socialAccount) {
-            return $socialAccount->user;
+            $user = $socialAccount->user;
+        } else {
+            $user = $this->usersRepository->getUserFromProviderUser($providerUser);
+
+            $user->addSocialAccount(['provider_id' => $providerUser->getId(), 'provider_name' => $provider]);
         }
-
-        $user = $this->usersRepository->getUserFromProviderUser($providerUser);
-
-        $user->addSocialAccount(['provider_id' => $providerUser->getId(), 'provider_name' => $provider]);
 
         Auth::login($user, true);
 
-        return  redirect()->intended();
+        return redirect()->intended('/home');
     }
 }
