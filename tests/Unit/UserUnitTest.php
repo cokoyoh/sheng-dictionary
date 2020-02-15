@@ -36,7 +36,7 @@ class UserUnitTest extends TestCase
     {
         $user = create(User::class);
 
-        $user->addWord(['description' => 'hoccus poccus']);
+        $user->addWord(['title' => 'hoccus poccus']);
 
         $this->assertEquals(1, $user->words()->count());
     }

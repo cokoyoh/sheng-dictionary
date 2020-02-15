@@ -137,34 +137,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "word-definition",
-  props: {
-    word: {
-      title: {
-        type: String,
-        "default": 'hocus pocus!'
-      },
-      likes: {
-        type: Number,
-        "default": 235
-      },
-      dislikes: {
-        type: Number,
-        "default": 65
-      }
-    }
-  },
+  props: ['word'],
   data: function data() {
     return {
-      likes: this.word.likes || 0,
-      dislikes: this.word.dislikes || 0,
+      likes: 0,
+      dislikes: 0,
       voted: null
     };
   },
@@ -702,9 +681,28 @@ var render = function() {
         [_vm._v(_vm._s(_vm.word.title))]
       ),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "text-gray-800 mt-2 break-words" }, [
+        _vm._v("\n        " + _vm._s(_vm.word.description) + "\n    ")
+      ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("p", { staticClass: "pt-4 ml-1 text-blue-600 font-semibold" }, [
+        _vm._v("Examples")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-gray-700 text-sm leading-5 mt-3 ml-5" }, [
+        _vm._v("\n        " + _vm._s(_vm.word.examples) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-5 ml-2 text-xs text-gray-600" }, [
+        _vm._v("\n        @"),
+        _c("span", { staticClass: "text-blue-600 font-semibold" }, [
+          _vm._v(_vm._s(_vm.word.user))
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "text-gray-700 font-normal" }, [
+          _vm._v(_vm._s(_vm.word.date))
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -794,48 +792,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-gray-800 mt-2 break-words" }, [
-      _c("p", [
-        _vm._v(
-          "1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aperiam\n            assumenda cupiditate doloremque earum esse expedita inventore maxime modi, nisi nostrum nulla\n            porro praesentium provident sapiente sed veniam voluptatum."
-        )
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aperiam\n            assumenda cupiditate doloremque earum esse expedita inventore maxime modi, nisi nostrum nulla\n            porro praesentium provident sapiente sed veniam voluptatum."
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "text-gray-700 text-sm leading-5 mt-3 ml-5" },
-      [
-        _c("p", [_vm._v("1. Lorem ipsum dolor sit amet.")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("2. This is what your mother looks like")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "3. What does Marcellas Wallace look like? Doe he look like a bitch? Then why did you try to fuck him like a bitch Bret?"
-          )
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

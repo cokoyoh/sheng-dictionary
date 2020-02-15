@@ -10,13 +10,18 @@ class Word extends Model
 
     protected $guarded = [];
 
-    public function definitions()
+    public function definition()
     {
-        return $this->hasMany(Definition::class);
+        return $this->hasOne(Definition::class);
     }
 
     public function addDefinition(array $attributes)
     {
-        return $this->definitions()->create($attributes);
+        return $this->definition()->create($attributes);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\Definition;
+use App\User;
 use App\Word;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Facades\Tests\Setup\WordFactory;
@@ -12,11 +14,11 @@ class WordUnitTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function a_word_has_definitions()
+    public function a_word_has_a_definition()
     {
-        $word = WordFactory::withDefinitions(2)->create();
+        $word = WordFactory::withDefinitions(1)->create();
 
-        $this->assertCount(2, $word->definitions);
+        $this->assertInstanceOf(Definition::class, $word->definition);
     }
 
     /** @test */
@@ -28,6 +30,14 @@ class WordUnitTest extends TestCase
             'description' => 'hocus pocus is just meaningless word!'
         ]);
 
-        $this->assertCount(1, $word->definitions);
+        $this->assertInstanceOf(Definition::class, $word->definition);
+    }
+
+    /** @test */
+    public function a_word_belong_to_a_user()
+    {
+        $word = create(Word::class);
+
+        $this->assertInstanceOf(User::class, $word->user);
     }
 }

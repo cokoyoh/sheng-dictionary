@@ -2,20 +2,14 @@
     <div id="word" class="bg-white px-5 py-8 pb-12 rounded shadow tracking-wide leading-6 text-sm cursor-pointer mb-3">
         <h3 class="text-blue-600 focus:underline font-bold hover:underline text-xl">{{word.title}}</h3>
         <div class="text-gray-800 mt-2 break-words">
-            <p>1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aperiam
-                assumenda cupiditate doloremque earum esse expedita inventore maxime modi, nisi nostrum nulla
-                porro praesentium provident sapiente sed veniam voluptatum.</p>
-
-            <br>
-
-            <p>2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aperiam
-                assumenda cupiditate doloremque earum esse expedita inventore maxime modi, nisi nostrum nulla
-                porro praesentium provident sapiente sed veniam voluptatum.</p>
+            {{word.description}}
         </div>
+        <p class="pt-4 ml-1 text-blue-600 font-semibold">Examples</p>
         <div class="text-gray-700 text-sm leading-5 mt-3 ml-5">
-            <p>1. Lorem ipsum dolor sit amet.</p>
-            <p>2. This is what your mother looks like</p>
-            <p>3. What does Marcellas Wallace look like? Doe he look like a bitch? Then why did you try to fuck him like a bitch Bret?</p>
+            {{word.examples}}
+        </div>
+        <div class="mt-5 ml-2 text-xs text-gray-600">
+            @<span class="text-blue-600 font-semibold">{{word.user}}</span> <span class="text-gray-700 font-normal">{{word.date}}</span>
         </div>
         <div class="flex items-center justify-around w-1/2 mt-5 relative">
             <div @click="liked"
@@ -50,27 +44,12 @@
     export default {
         name: "word-definition",
 
-        props: {
-            word: {
-                title: {
-                  type: String,
-                  default: 'hocus pocus!'
-                },
-                likes: {
-                    type: Number,
-                    default: 235
-                },
-                dislikes: {
-                    type: Number,
-                    default: 65
-                },
-            }
-        },
+        props: ['word'],
 
         data() {
           return {
-              likes: this.word.likes || 0,
-              dislikes: this.word.dislikes || 0,
+              likes:  0,
+              dislikes: 0,
               voted: null,
           };
         },
@@ -105,6 +84,6 @@
                     this.voted = 'dislike';
                 }
             },
-        }
+        },
     }
 </script>
