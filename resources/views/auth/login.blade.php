@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="-mt-8 h-screen bg-gray-200">
+    <div class="h-screen bg-gray-200">
        <div class="flex items-center">
            <div class="w-1/2 px-24">
                <div class="text-gray-900 text-4xl font-medium text-center">
