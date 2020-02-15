@@ -131,14 +131,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "word-definition",
-  props: ['word'],
-  data: function data() {
-    return {};
+  props: {
+    word: {
+      title: {
+        type: String,
+        "default": 'hocus pocus!'
+      },
+      likes: {
+        type: Number,
+        "default": 235
+      },
+      dislikes: {
+        type: Number,
+        "default": 65
+      }
+    }
   },
-  mounted: function mounted() {
-    console.log('Word is.' + this.word);
+  data: function data() {
+    return {
+      likes: this.word.likes || 0,
+      dislikes: this.word.dislikes || 0,
+      voted: null
+    };
+  },
+  methods: {
+    liked: function liked() {
+      var vote = this.voted;
+
+      if (!vote) {
+        this.likes++;
+        this.voted = 'like';
+      }
+
+      if (vote && vote === 'dislike') {
+        this.likes++;
+        this.dislikes--;
+        this.voted = 'like';
+      }
+    },
+    disliked: function disliked() {
+      var vote = this.voted;
+
+      if (vote && vote === 'like') {
+        this.likes--;
+        this.dislikes++;
+        this.voted = 'dislike';
+      }
+
+      if (!vote) {
+        this.dislikes++;
+        this.voted = 'dislike';
+      }
+    }
   }
 });
 
@@ -641,7 +699,7 @@ var render = function() {
           staticClass:
             "text-blue-600 focus:underline font-bold hover:underline text-xl"
         },
-        [_vm._v(_vm._s(_vm.word))]
+        [_vm._v(_vm._s(_vm.word.title))]
       ),
       _vm._v(" "),
       _vm._m(0),
@@ -650,57 +708,87 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "flex items-center justify-around w-1/2 mt-5" },
+        { staticClass: "flex items-center justify-around w-1/2 mt-5 relative" },
         [
-          _c("div", { staticClass: "flex items-center" }, [
-            _c(
-              "svg",
-              {
-                staticClass:
-                  "fill-current h-6 w-6 border border-gray-800 px-1 rounded-full mr-1 text-gray-800",
-                attrs: { viewBox: "0 0 20 20" }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M11 0h1v3l3 7v8a2 2 0 0 1-2 2H5c-1.1 0-2.31-.84-2.7-1.88L0 12v-2a2 2 0 0 1 2-2h7V2a2 2 0 0 1 2-2zm6 10h3v10h-3V10z"
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "font-bold text-gray-700 text-sm font-sans" },
-              [_vm._v("234")]
-            )
-          ]),
+          _c(
+            "div",
+            {
+              staticClass:
+                "flex items-center shadow px-2 py-1 rounded-full cursor-pointer w-3/12",
+              class: { "border border-green-400": _vm.voted === "like" },
+              on: { click: _vm.liked }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass:
+                    "fill-current h-6 w-6 px-1 rounded-full mr-1 text-gray-600",
+                  class: {
+                    "text-green-600 border-white": _vm.voted === "like"
+                  },
+                  attrs: { viewBox: "0 0 20 20" }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M11 0h1v3l3 7v8a2 2 0 0 1-2 2H5c-1.1 0-2.31-.84-2.7-1.88L0 12v-2a2 2 0 0 1 2-2h7V2a2 2 0 0 1 2-2zm6 10h3v10h-3V10z"
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass: "font-bold text-gray-700 text-xs font-sans",
+                  class: { "text-green-600": _vm.voted === "like" }
+                },
+                [_vm._v(_vm._s(_vm.likes))]
+              )
+            ]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "flex items-center" }, [
-            _c(
-              "svg",
-              {
-                staticClass:
-                  "fill-current h-6 w-6 border border-gray-800 px-1 rounded-full mr-1 text-gray-800",
-                attrs: { viewBox: "0 0 20 20" }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M11 20a2 2 0 0 1-2-2v-6H2a2 2 0 0 1-2-2V8l2.3-6.12A3.11 3.11 0 0 1 5 0h8a2 2 0 0 1 2 2v8l-3 7v3h-1zm6-10V0h3v10h-3z"
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "font-bold text-gray-700 text-sm font-sans" },
-              [_vm._v("54")]
-            )
-          ])
+          _c(
+            "div",
+            {
+              staticClass:
+                "flex items-center shadow px-2 py-1 rounded-full cursor-pointer w-3/12",
+              class: { "border border-red-400": _vm.voted === "dislike" },
+              on: { click: _vm.disliked }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass:
+                    "fill-current h-6 w-6 px-1 rounded-full mr-1 text-gray-600",
+                  class: {
+                    "text-red-600 border-white": _vm.voted === "dislike"
+                  },
+                  attrs: { viewBox: "0 0 20 20" }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M11 20a2 2 0 0 1-2-2v-6H2a2 2 0 0 1-2-2V8l2.3-6.12A3.11 3.11 0 0 1 5 0h8a2 2 0 0 1 2 2v8l-3 7v3h-1zm6-10V0h3v10h-3z"
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass: "font-bold text-gray-700 text-xs font-sans",
+                  class: { "text-red-600": _vm.voted === "dislike" }
+                },
+                [_vm._v(_vm._s(_vm.dislikes))]
+              )
+            ]
+          )
         ]
       )
     ]
