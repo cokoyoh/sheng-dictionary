@@ -26,10 +26,16 @@ class UsersRepository
             return $user;
         }
 
+        $providerUserEmail = $providerUser->getEmail();
+
         $user = $this->save([
-            'email' => $providerUser->getEmail(),
-            'name' => $providerUser->getName(),
+            'email' => $providerUserEmail,
+            'name' => $providerUser->getName() ?? $providerUser->getNickname(),
         ]);
+
+        if($providerUserEmail) {
+            $user->markEmailAsVerified();
+        }
 
         return $user;
     }
