@@ -52,7 +52,7 @@ class SocialAccountsController extends Controller
         $user = $this->usersRepository->getUserFromProviderUser($providerUser);
 
         $user->addSocialAccount(['provider_id' => $providerUser->getId(), 'provider_name' => $provider]);
-        
+
         return $user;
     }
 }
