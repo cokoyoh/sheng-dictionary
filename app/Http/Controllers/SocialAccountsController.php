@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Sheng\Users\SocialAccountsRepository;
 use App\Sheng\Users\UsersRepository;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
 class SocialAccountsController extends Controller
@@ -53,6 +54,8 @@ class SocialAccountsController extends Controller
 
         $user->addSocialAccount(['provider_id' => $providerUser->getId(), 'provider_name' => $provider]);
 
-        return $user;
+        Auth::login($user, true);
+
+        return  redirect()->intended();
     }
 }
