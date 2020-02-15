@@ -29,10 +29,10 @@
                                 <a class="no-underline hover:bg-white hover:text-gray-700 active:bg-gray-400 active:text-white text-gray-600 font-semibold border rounded-full border-4 border-gray-600 py-2 px-3 text-sm ml-4" href="{{ route('register') }}">{{ __('Register') }}</a>
                             @endif
                         @else
-                            <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>
+                            <span class="text-gray-700 text-sm pr-4">{{ Auth::user()->name }}</span>
 
                             <a href="{{ route('logout') }}"
-                               class="no-underline hover:underline text-gray-300 text-sm p-3"
+                               class="no-underline hover:underline text-gray-700 text-sm p-3"
                                onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
