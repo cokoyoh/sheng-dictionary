@@ -2,18 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Sheng\Transformers\DefinitionTransformer;
+use App\Sheng\Transformers\WordTransformer;
+use App\Word;
 
 class HomeController extends Controller
 {
+    protected $definitionsTransformer;
+    protected $wordsTransformer;
+
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param DefinitionTransformer $definitionsTransformer
+     * @param WordTransformer $wordsTransformer
      */
-    public function __construct()
-    {
+    public function __construct(
+        DefinitionTransformer $definitionsTransformer,
+        WordTransformer $wordsTransformer
+    ) {
         $this->middleware('auth');
+        $this->definitionsTransformer = $definitionsTransformer;
+        $this->wordsTransformer = $wordsTransformer;
     }
 
     /**
@@ -23,6 +33,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $words = Word::latest()->take(20)->get()->map(function ($word) {
+            $definition = $word->definition;
+
+            return [
+                'user' => $word->user->name,
+                'description' =>  optional($definition)->description,
+                'date' => $word->created_at->toFormattedDateString(),
+                'examples' => optional($definition)->examples,
+                'title' => $word->title
+            ];
+        });
+
+        return view('home', [
+            'words' => $words
+        ]);
     }
 }

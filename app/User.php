@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->socialAccounts()->create($attributes);
     }
+
+    public function words()
+    {
+        return $this->hasMany(Word::class);
+    }
+
+    public function addWord(array $attributes)
+    {
+        return $this->words()->create($attributes);
+    }
 }
