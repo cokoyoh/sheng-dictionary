@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreWordRequest;
+use App\Word;
+
 class WordsController extends Controller
 {
-    public function store($id = null)
+    public function store(StoreWordRequest $request, Word $word = null)
     {
         $word = auth()->user()->addWord(\request()->only('title'));
 

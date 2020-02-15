@@ -21,6 +21,9 @@ Route::get('{driver}/login', 'SocialAccountsController@handleProviderCallback')-
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::middleware(['auth'])->group(function () {
+    Route::post('/words/{id?}', 'WordsController@store')->name('words.store');
+});
+
 //Route::get('/words', 'WordsController@index')->name('words.index');
 Route::get('/words/{id}', 'WordsController@show')->name('words.show');
-Route::post('/words/{id?}', 'WordsController@store')->name('words.store');
