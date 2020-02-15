@@ -36,22 +36,13 @@
                 </h1>
                 <ul class="list-reset">
                     <li class="inline pr-8">
-                        <a href="https://laravel.com/docs" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="Documentation">Documentation</a>
+                        <a href="{!! route('login.social', 'github') !!}" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="GitHub">Login With Github</a>
                     </li>
                     <li class="inline pr-8">
-                        <a href="https://laracasts.com" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="Laracasts">Laracasts</a>
+                        <a href="{!! route('login.social', 'twitter') !!}" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="GitHub">Login With Twitter</a>
                     </li>
                     <li class="inline pr-8">
-                        <a href="https://laravel-news.com" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="News">News</a>
-                    </li>
-                    <li class="inline pr-8">
-                        <a href="https://nova.laravel.com" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="Nova">Nova</a>
-                    </li>
-                    <li class="inline pr-8">
-                        <a href="https://forge.laravel.com" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="Forge">Forge</a>
-                    </li>
-                    <li class="inline pr-8">
-                        <a href="https://github.com/laravel/laravel" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="GitHub">GitHub</a>
+                        <a href="{!! route('login.social', 'facebook') !!}" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="GitHub">Login With Facebook</a>
                     </li>
                 </ul>
             </div>
