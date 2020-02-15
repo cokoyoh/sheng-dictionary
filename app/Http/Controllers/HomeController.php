@@ -21,7 +21,7 @@ class HomeController extends Controller
         DefinitionTransformer $definitionsTransformer,
         WordTransformer $wordsTransformer
     ) {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('landing');
         $this->definitionsTransformer = $definitionsTransformer;
         $this->wordsTransformer = $wordsTransformer;
     }
@@ -33,7 +33,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $words = Word::latest()->take(20)->get()->map(function ($word) {
+        $words = $this->getWords();
+
+        return view('home', [
+            'words' => $words
+        ]);
+    }
+
+    public function landing()
+    {
+        $words = $this->getWords();
+
+        return view('welcome', [
+            'words' => $words
+        ]);
+    }
+
+    private function getWords()
+    {
+        return Word::latest()->take(20)->get()->map(function ($word) {
             $definition = $word->definition;
 
             return [
@@ -44,9 +62,5 @@ class HomeController extends Controller
                 'title' => $word->title
             ];
         });
-
-        return view('home', [
-            'words' => $words
-        ]);
     }
 }
