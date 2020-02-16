@@ -11,7 +11,7 @@
               <div class="mt-5 text-center">
                   <h5 class="text-gray-800 mb-3 text-xs">Login with</h5>
                   <a href="{!! route('login.social', 'facebook') !!}" class="px-2 py-2 rounded m-1 text-xs font-medium border border-gray-100 text-gray-100" style="background:  #2553b4">Facebook</a>
-                  <a href="{!! route('login.social', 'goggle') !!}" class="bg-white px-2 py-2 rounded text-gray-700 m-1 text-xs font-medium border border-gray-500">Google</a>
+                  <a href="{!! route('login.social', 'google') !!}" class="bg-white px-2 py-2 rounded text-gray-700 m-1 text-xs font-medium border border-gray-500">Google</a>
                   <a href="{!! route('login.social', 'twitter') !!}" class="px-2 py-2 rounded bg-blue-500 text-blue-100 m-1 text-xs font-medium border border-blue-100">Twitter</a>
                   <a href="{!! route('login.social', 'github') !!}" class="px-2 py-2 bg-white text-gray-700 rounded m-1 text-xs font-medium border border-gray-500">GitHib</a>
               </div>
