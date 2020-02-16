@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->words()->create($attributes);
     }
+
+    public function getAvatarAttribute()
+    {
+        return $this->avatar_url;
+    }
 }

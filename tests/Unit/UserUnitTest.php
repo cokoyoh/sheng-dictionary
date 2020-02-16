@@ -40,4 +40,12 @@ class UserUnitTest extends TestCase
 
         $this->assertEquals(1, $user->words()->count());
     }
+
+    /** @test */
+    public function a_user_can_retrieve_their_avatar_url()
+    {
+        $user = create(User::class);
+
+        $this->assertNotNull($user->avatar);
+    }
 }
