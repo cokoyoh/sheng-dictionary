@@ -25,9 +25,9 @@ class CreateSocialAccountsTable extends Migration
             $table->nullableTimestamps();
             $table->unique('provider_id', 'provider_id_UNIQUE');
 
-            $table->index('user_id', 'fk_social-accounts_users_idx');
+            $table->index('user_id', 'fk_social_accounts_users_idx');
 
-            $table->foreign('user_id', 'fk_social-accounts_users')
+            $table->foreign('user_id', 'fk_social_accounts_users')
                 ->references('id')
                 ->on('users')
                 ->onDelete('NO ACTION')
