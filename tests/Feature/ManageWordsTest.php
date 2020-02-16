@@ -70,8 +70,6 @@ class ManageWordsTest extends TestCase
     /** @test */
     public function unauthorised_users_cannot_edit_words_they_did_not_author()
     {
-        $this->withoutExceptionHandling();
-
         $author = create(User::class);
 
         $anonymous = create(User::class);
@@ -79,7 +77,7 @@ class ManageWordsTest extends TestCase
         $word = WordFactory::addedBy($author)->create();
 
         $this->actingAs($anonymous)
-            ->post(route('words.store', $word), $this->input())
+            ->post(route('words.update', $word), $this->input())
             ->assertForbidden();
     }
 
@@ -94,7 +92,7 @@ class ManageWordsTest extends TestCase
             ->post(route('words.store', $word), $updatedWord = $this->input())
             ->assertRedirect();
 
-        $this->assertDatabaseHas('words', $updatedWord);
+        $this->assertDatabaseHas('words', ['title' => $updatedWord['title']]);
     }
 
     private function input()
