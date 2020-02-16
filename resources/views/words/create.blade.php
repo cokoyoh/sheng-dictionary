@@ -9,15 +9,15 @@
                     action="{!! route('words.update', $word) !!}"
                   @else
                     action="{!! route('words.store') !!}"
-                  @endif
-            >
+                  @endif>
                 @csrf
                 <div class="field mb-6">
                     <label for="title" class="label text-sm mb-2 block">Word</label>
                     <div class="control">
                         <input type="text" value="{!! $word->title !!}" name="title" required="required"
                                placeholder="Doktari"
-                               class="focus:outline-none bg-transparent text-gray-700 border border-gray-300 rounded px-3 py-4 text-sm w-full">
+                               class="focus:outline-none bg-transparent text-gray-700 border
+                               border-gray-300 rounded px-3 py-4 text-sm w-full">
                     </div>
                 </div>
                 <div class="field mb-6">
@@ -44,11 +44,11 @@
 
                 <div class="field mb-6">
                     <button type="submit"
-                            class="focus:outline-none bg-gray-900 text-gray-300 px-4 py-2 rounded font-semibold mr-5">
-                        Submit
-                    </button>
+                            class="focus:outline-none bg-gray-900 text-gray-300 px-4 py-2 rounded font-semibold mr-5"
+                    >Submit</button>
                     <a href="/"
-                       class="text-gray-500 text-sm px-4 py-2 border border-gray-500 rounded hover:text-gray-700">Cancel</a>
+                       class="text-gray-500 text-sm px-4 py-2 border border-gray-500 rounded hover:text-gray-700"
+                    >Cancel</a>
                 </div>
             </form>
         </div>
