@@ -16,7 +16,8 @@
                     <div class="control">
                         <input type="text" value="{!! $word->title !!}" name="title" required="required"
                                placeholder="Doktari"
-                               class="focus:outline-none bg-transparent text-gray-700 border border-gray-300 rounded px-3 py-4 text-sm w-full">
+                               class="focus:outline-none bg-transparent text-gray-700 border
+                               border-gray-300 rounded px-3 py-4 text-sm w-full">
                     </div>
                 </div>
                 <div class="field mb-6">
@@ -25,7 +26,8 @@
                         <textarea rows="6" name="description" required="required"
                                   placeholder="- A person who prevents you from eating nyama."
                                   class="focus:outline-none text-gray-700 leading-6 px-5 py-3
-                                  bg-transparent border border-gray-300 rounded p-2 text-sm w-full">{!! optional($word->definition)->description !!}</textarea>
+                                  bg-transparent border border-gray-300 rounded p-2 text-sm w-full"
+                        >{!! optional($word->definition)->description !!}</textarea>
                     </div>
                 </div>
 
@@ -35,17 +37,18 @@
                         <textarea rows="5" name="examples" required="required"
                                   placeholder="- Umeona doktari hapa?"
                                   class="focus:outline-none text-gray-700 leading-6 px-5 py-3
-                                  bg-transparent border border-gray-300 rounded p-2 text-sm w-full">{!! optional($word->definition)->examples !!}</textarea>
+                                  bg-transparent border border-gray-300 rounded p-2 text-sm w-full"
+                        >{!! optional($word->definition)->examples !!}</textarea>
                     </div>
                 </div>
 
                 <div class="field mb-6">
                     <button type="submit"
-                            class="focus:outline-none bg-gray-900 text-gray-300 px-4 py-2 rounded font-semibold mr-5">
-                        Submit
-                    </button>
+                            class="focus:outline-none bg-gray-900 text-gray-300 px-4 py-2 rounded font-semibold mr-5"
+                    >Submit</button>
                     <a href="/"
-                       class="text-gray-500 text-sm px-4 py-2 border border-gray-500 rounded hover:text-gray-700">Cancel</a>
+                       class="text-gray-500 text-sm px-4 py-2 border border-gray-500 rounded hover:text-gray-700"
+                    >Cancel</a>
                 </div>
             </form>
         </div>
