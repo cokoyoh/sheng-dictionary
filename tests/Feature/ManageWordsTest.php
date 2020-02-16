@@ -25,7 +25,6 @@ class ManageWordsTest extends TestCase
     /** @test */
     public function authorised_users_can_view_page_to_add_a_new_word()
     {
-        $this->withoutExceptionHandling();
         $this->actingAs(create(User::class))
             ->get(route('words.create'))
             ->assertOk();
@@ -50,8 +49,6 @@ class ManageWordsTest extends TestCase
     /** @test */
     public function authorised_user_can_add_words_to_the_dictionary()
     {
-        $this->withoutExceptionHandling();
-
         $katelo = UserFactory::create();
 
         $wordDefinition = $this->input();
@@ -73,6 +70,8 @@ class ManageWordsTest extends TestCase
     /** @test */
     public function unauthorised_users_cannot_edit_words_they_did_not_author()
     {
+        $this->withoutExceptionHandling();
+
         $author = create(User::class);
 
         $anonymous = create(User::class);
@@ -80,14 +79,13 @@ class ManageWordsTest extends TestCase
         $word = WordFactory::addedBy($author)->create();
 
         $this->actingAs($anonymous)
-            ->post(route('words.store', $word), [])
+            ->post(route('words.store', $word), $this->input())
             ->assertForbidden();
     }
 
     /** @test */
     public function authorised_users_can_update_a_word_definition()
     {
-        $this->withoutExceptionHandling();
         $author = create(User::class);
 
         $word = WordFactory::addedBy($author)->create();
@@ -101,14 +99,9 @@ class ManageWordsTest extends TestCase
 
     private function input()
     {
-        $wordDefinition = raw(Word::class) + raw(Definition::class);
-
-        unset($wordDefinition['user_id']);
-
-        unset($wordDefinition['word_id']);
-
-        unset($wordDefinition['slug']);
-
-        return $wordDefinition;
+        return [
+            'title' => "hocus pocus",
+            'description' => 'some description'
+        ];
     }
 }
