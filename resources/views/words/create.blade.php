@@ -2,14 +2,15 @@
 
 @section('content')
     <div class="container mx-auto h-screen mt-5">
-        <div class="lg:w-2/3 lg:mx-auto bg-white p-6 md:px-6 rounded">
+        <div class="w-2/3 mx-auto bg-white p-6 px-6 rounded">
             <h1 class="text-2xl font-normal text-center">Define a new word</h1>
             <form method="post"
                   @if($word->id)
                     action="{!! route('words.update', $word) !!}"
                   @else
                     action="{!! route('words.store') !!}"
-                  @endif>
+                  @endif
+            >
                 @csrf
                 <div class="field mb-6">
                     <label for="title" class="label text-sm mb-2 block">Word</label>
@@ -20,6 +21,7 @@
                                border-gray-300 rounded px-3 py-4 text-sm w-full">
                     </div>
                 </div>
+
                 <div class="field mb-6">
                     <label for="description" class="label text-sm mb-2 block">Definition</label>
                     <div class="control">
@@ -35,7 +37,7 @@
                     <label for="examples" class="label text-sm mb-2 block">Examples</label>
                     <div class="control">
                         <textarea rows="5" name="examples" required="required"
-                                  placeholder="- Umeona doktari hapa?"
+                                  placeholder="- Umeona doktari hapa"
                                   class="focus:outline-none text-gray-700 leading-6 px-5 py-3
                                   bg-transparent border border-gray-300 rounded p-2 text-sm w-full"
                         >{!! optional($word->definition)->examples !!}</textarea>
