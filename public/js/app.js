@@ -2150,11 +2150,13 @@ __webpack_require__.r(__webpack_exports__);
         this.likes--;
         this.dislikes++;
         this.voted = 'dislike';
+        this.countVote(this.voted);
       }
 
       if (!vote) {
         this.dislikes++;
         this.voted = 'dislike';
+        this.countVote(this.voted);
       }
     },
     edit: function edit(word) {

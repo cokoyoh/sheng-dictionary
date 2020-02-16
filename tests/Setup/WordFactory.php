@@ -5,6 +5,7 @@ namespace Tests\Setup;
 
 
 use App\Definition;
+use App\Dislike;
 use App\Like;
 use App\User;
 use App\Word;
@@ -14,6 +15,7 @@ class WordFactory
     private $count = null;
     private $user = null;
     private $liked = false;
+    private $disliked = false;
 
     public function create()
     {
@@ -23,6 +25,10 @@ class WordFactory
 
         if ($this->liked) {
             create(Like::class, ['user_id' => $user->id, 'word_id' => $word->id]);
+        }
+
+        if ($this->disliked) {
+            create(Dislike::class, ['user_id' => $user->id, 'word_id' => $word->id]);
         }
 
         if ($this->count) {
@@ -51,6 +57,13 @@ class WordFactory
     public function liked()
     {
         $this->liked = true;
+
+        return $this;
+    }
+
+    public function disliked()
+    {
+        $this->disliked = true;
 
         return $this;
     }

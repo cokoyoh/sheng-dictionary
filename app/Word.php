@@ -32,4 +32,9 @@ class Word extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function dislikes()
+    {
+        return $this->hasMany(Dislike::class);
+    }
 }

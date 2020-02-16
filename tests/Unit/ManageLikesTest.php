@@ -22,6 +22,14 @@ class ManageLikesTest extends TestCase
     }
 
     /** @test */
+    public function it_is_an_instance_of_dislike()
+    {
+        $word = WordFactory::disliked()->create();
+
+        $this->assertInstanceOf( Collection::class, $word->dislikes);
+    }
+
+    /** @test */
     public function an_authenticated_user_can_like_a_word()
     {
         $user = $this->signIn();
@@ -31,5 +39,17 @@ class ManageLikesTest extends TestCase
         $word->liked();
 
         $this->assertEquals($word->likes()->first()->user_id, $user->id);
+    }
+
+    /** @test */
+    public function an_authenticated_user_can_dislike_a_word()
+    {
+        $user = $this->signIn();
+
+        $word = create(Word::class);
+
+        $word->disliked();
+
+        $this->assertEquals($word->dislikes()->first()->user_id, $user->id);
     }
 }

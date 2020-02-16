@@ -105,11 +105,13 @@
                     this.likes--;
                     this.dislikes++;
                     this.voted = 'dislike';
+                    this.countVote(this.voted);
                 }
 
                 if (! vote) {
                     this.dislikes++;
                     this.voted = 'dislike';
+                    this.countVote(this.voted);
                 }
             },
 

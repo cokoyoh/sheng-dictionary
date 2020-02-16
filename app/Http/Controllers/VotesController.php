@@ -12,4 +12,11 @@ class VotesController extends Controller
 
         return redirect('/');
     }
+
+    public function dislike(Word $word)
+    {
+        $word->disliked();
+
+        return redirect('/');
+    }
 }

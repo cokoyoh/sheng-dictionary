@@ -22,4 +22,16 @@ class ManageVotesTest extends TestCase
 
         $this->assertCount(1, $word->likes);
     }
+
+    /** @test */
+    public function authorised_user_can_dislikes_word_definition()
+    {
+        $word = create(Word::class);
+
+        $this->actingAs(create(User::class))
+            ->get(route('words.dislike', $word))
+            ->assertRedirect();
+
+        $this->assertCount(1, $word->dislikes);
+    }
 }
