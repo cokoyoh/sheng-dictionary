@@ -26,6 +26,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/words/create/{word?}', 'WordsController@create')->name('words.create');
     Route::post('/words', 'WordsController@store')->name('words.store');
     Route::post('/words/{word}', 'WordsController@update')->name('words.update');
+
+    Route::get('/word/like/{word}', 'VotesController@like')->name('words.like');
+    Route::get('/word/dislike/{word}', 'VotesController@dislike')->name('words.dislike');
 });
 
 Route::get('/words/{id}', 'WordsController@show')->name('words.show');

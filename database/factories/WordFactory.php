@@ -3,6 +3,8 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Definition;
+use App\Dislike;
+use App\Like;
 use App\User;
 use App\Word;
 use Faker\Generator as Faker;
@@ -32,5 +34,19 @@ $factory->define(Definition::class, function (Faker $faker) {
         'word_id' => create(Word::class),
         'description' => $faker->sentence(5, false),
         'examples' => $faker->paragraph(3, false)
+    ];
+});
+
+$factory->define(Like::class, function (Faker $faker) {
+    return [
+        'word_id' => create(Word::class),
+        'user_id' => create(User::class)
+    ];
+});
+
+$factory->define(Dislike::class, function (Faker $faker) {
+    return [
+        'word_id' => create(Word::class),
+        'user_id' => create(User::class)
     ];
 });

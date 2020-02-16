@@ -35,7 +35,7 @@
                        @enderror
                    </div>
 
-                   <div class="">
+                   <div>
                        <input id="password"
                               type="password"
                               class="w-full py-5 mt-5 outline-none text-gray-900 px-3 text-lg @error('password') border-red-500 @enderror"
@@ -50,7 +50,7 @@
                        @enderror
                    </div>
 
-                   <div class="flex mt-3 text-gray-600 text-xs italic  ">
+                   <div class="flex mt-3 text-gray-600 text-xs italic">
                        <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                        <label class="text-sm ml-3" for="remember">

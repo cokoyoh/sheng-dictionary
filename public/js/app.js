@@ -2121,7 +2121,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      likes: 0,
+      likes: this.word.likes || 0,
       dislikes: 0,
       voted: null
     };
@@ -2133,12 +2133,14 @@ __webpack_require__.r(__webpack_exports__);
       if (!vote) {
         this.likes++;
         this.voted = 'like';
+        this.countVote(this.voted);
       }
 
       if (vote && vote === 'dislike') {
         this.likes++;
         this.dislikes--;
         this.voted = 'like';
+        this.countVote(this.voted);
       }
     },
     disliked: function disliked() {
@@ -2148,15 +2150,20 @@ __webpack_require__.r(__webpack_exports__);
         this.likes--;
         this.dislikes++;
         this.voted = 'dislike';
+        this.countVote(this.voted);
       }
 
       if (!vote) {
         this.dislikes++;
         this.voted = 'dislike';
+        this.countVote(this.voted);
       }
     },
     edit: function edit(word) {
       location.href = '/words/create/' + word.id;
+    },
+    countVote: function countVote(vote) {
+      axios.get("/word/".concat(vote, "/").concat(this.word.id));
     }
   }
 });

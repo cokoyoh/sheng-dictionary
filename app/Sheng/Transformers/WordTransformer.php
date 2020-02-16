@@ -18,7 +18,13 @@ class WordTransformer extends Transformer
              'date' => $word->created_at->toFormattedDateString(),
              'examples' => optional($definition)->examples,
              'title' => $word->title,
-             'editable' => auth()->id() == $word->user_id
+             'editable' => auth()->id() == $word->user_id,
+             'likes' => $this->getTotalLikes($word)
          ];
+    }
+
+    private function getTotalLikes($word)
+    {
+        return $word->likes()->count();
     }
 }
