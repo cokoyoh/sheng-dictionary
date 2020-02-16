@@ -11,9 +11,7 @@
             @endif
 
             <div class="mt-4">
-                @foreach ($words as $word)
-                    <word-definition :word='{!! json_encode($word) !!}'></word-definition>
-                @endforeach
+                <words api="/apis/words"></words>
             </div>
 
         </div>
