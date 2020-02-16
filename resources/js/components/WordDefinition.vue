@@ -65,8 +65,8 @@
 
         props: {
             word: {
-                type: Array,
-                default: [],
+                type: Object,
+                default: {},
             }
         },
 

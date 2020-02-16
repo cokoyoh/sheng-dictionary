@@ -31,4 +31,4 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/words/{id}', 'WordsController@show')->name('words.show');
 
 //Public Routes
-Route::get('api/words', 'Apis\WordsController@getWords');
+Route::get('apis/words', 'Apis\WordsController@getWords');
