@@ -28,5 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/words/{word}', 'WordsController@update')->name('words.update');
 });
 
-//Route::get('/words', 'WordsController@index')->name('words.index');
 Route::get('/words/{id}', 'WordsController@show')->name('words.show');
+
+//Public Routes
+Route::get('api/words', 'Apis\WordsController@getWords');

@@ -17,7 +17,7 @@ class WordTransformer extends Transformer
              'description' =>  optional($definition)->description,
              'date' => $word->created_at->toFormattedDateString(),
              'examples' => optional($definition)->examples,
-             'title' => optional($definition)->title,
+             'title' => $word->title,
              'editable' => auth()->id() == $word->user_id
          ];
     }
