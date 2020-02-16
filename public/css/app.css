@@ -14047,6 +14047,13 @@ video {
   background-color: #e2e8f0;
 }
 
+pre {
+  display: block;
+  font-family: inherit;
+  white-space: pre-wrap;
+  margin: 1em 0;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

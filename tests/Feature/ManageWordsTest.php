@@ -16,7 +16,17 @@ class ManageWordsTest extends TestCase
     /** @test */
     public function unauthorised_users_cannot_manage_words()
     {
+        $this->get(route('words.create'))->assertRedirect('login');
         $this->post(route('words.store'), [])->assertRedirect('login');
+    }
+
+    /** @test */
+    public function authorised_users_can_view_page_to_add_a_new_word()
+    {
+        $this->withoutExceptionHandling();
+        $this->actingAs(create(User::class))
+            ->get(route('words.create'))
+            ->assertOk();
     }
 
     /** @test */

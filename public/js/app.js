@@ -1444,7 +1444,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "text-gray-800 mt-2 break-words" }, [
-        _vm._v("\n        " + _vm._s(_vm.word.description) + "\n    ")
+        _c("pre", [_vm._v(_vm._s(_vm.word.description))])
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "pt-4 ml-1 text-blue-600 font-semibold" }, [
@@ -1452,7 +1452,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "text-gray-700 text-sm leading-5 mt-3 ml-5" }, [
-        _vm._v("\n        " + _vm._s(_vm.word.examples) + "\n    ")
+        _c("pre", [_vm._v(_vm._s(_vm.word.examples))])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "mt-5 ml-2 text-xs text-gray-600" }, [

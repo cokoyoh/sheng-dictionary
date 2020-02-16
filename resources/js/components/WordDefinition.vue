@@ -2,11 +2,11 @@
     <div id="word" class="bg-white px-5 py-8 pb-12 rounded shadow tracking-wide leading-6 text-sm cursor-pointer mb-3">
         <h3 class="text-blue-600 focus:underline font-bold hover:underline text-xl">{{word.title}}</h3>
         <div class="text-gray-800 mt-2 break-words">
-            {{word.description}}
+           <pre>{{word.description}}</pre>
         </div>
         <p class="pt-4 ml-1 text-blue-600 font-semibold">Examples</p>
         <div class="text-gray-700 text-sm leading-5 mt-3 ml-5">
-            {{word.examples}}
+            <pre>{{word.examples}}</pre>
         </div>
         <div class="mt-5 ml-2 text-xs text-gray-600">
             @<span class="text-blue-600 font-semibold">{{word.user}}</span> <span class="text-gray-700 font-normal">{{word.date}}</span>

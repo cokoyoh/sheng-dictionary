@@ -7,6 +7,11 @@ use App\Word;
 
 class WordsController extends Controller
 {
+    public function create()
+    {
+         return view('words.create');
+    }
+
     public function store(StoreWordRequest $request, Word $word = null)
     {
         $word = auth()->user()->addWord(\request()->only('title'));
@@ -17,6 +22,6 @@ class WordsController extends Controller
 
         $word->addDefinition($input);
 
-        return redirect()->route('words.show', $word);
+        return redirect()->route('home');
     }
 }

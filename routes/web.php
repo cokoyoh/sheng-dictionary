@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@landing')->name('default');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/words/create', 'WordsController@create')->name('words.create');
     Route::post('/words/{id?}', 'WordsController@store')->name('words.store');
 });
 
