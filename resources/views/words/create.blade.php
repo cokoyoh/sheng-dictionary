@@ -9,8 +9,7 @@
                     action="{!! route('words.update', $word) !!}"
                   @else
                     action="{!! route('words.store') !!}"
-                  @endif
-            >
+                  @endif>
                 @csrf
                 <div class="field mb-6">
                     <label for="title" class="label text-sm mb-2 block">Word</label>
@@ -26,8 +25,7 @@
                         <textarea rows="6" name="description" required="required"
                                   placeholder="- A person who prevents you from eating nyama."
                                   class="focus:outline-none text-gray-700 leading-6 px-5 py-3
-                                  bg-transparent border border-gray-300 rounded p-2 text-sm w-full"
-                        >{!! optional($word->definition)->description !!}</textarea>
+                                  bg-transparent border border-gray-300 rounded p-2 text-sm w-full">{!! optional($word->definition)->description !!}</textarea>
                     </div>
                 </div>
 
@@ -37,8 +35,7 @@
                         <textarea rows="5" name="examples" required="required"
                                   placeholder="- Umeona doktari hapa?"
                                   class="focus:outline-none text-gray-700 leading-6 px-5 py-3
-                                  bg-transparent border border-gray-300 rounded p-2 text-sm w-full"
-                        >{!! optional($word->definition)->examples !!}</textarea>
+                                  bg-transparent border border-gray-300 rounded p-2 text-sm w-full">{!! optional($word->definition)->examples !!}</textarea>
                     </div>
                 </div>
 
