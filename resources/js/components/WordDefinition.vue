@@ -72,7 +72,7 @@
 
         data() {
           return {
-              likes:  0,
+              likes: this.word.likes ||  0,
               dislikes: 0,
               voted: null,
           };
@@ -85,12 +85,16 @@
                 if (!vote) {
                     this.likes++;
                     this.voted = 'like';
+
+                    this.countVote(this.voted);
                 }
 
                 if (vote && vote === 'dislike') {
                     this.likes++;
                     this.dislikes--;
-                    this.voted = 'like'
+                    this.voted = 'like';
+
+                    this.countVote(this.voted);
                 }
             },
 
@@ -111,6 +115,10 @@
 
             edit(word) {
                 location.href = '/words/create/' + word.id
+            },
+
+            countVote(vote) {
+                axios.get(`/word/${vote}/${this.word.id}`);
             }
         },
     }
