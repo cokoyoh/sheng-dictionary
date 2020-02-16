@@ -55,11 +55,13 @@ class HomeController extends Controller
             $definition = $word->definition;
 
             return [
+                'id' => $word->id,
                 'user' => $word->user->name,
                 'description' =>  optional($definition)->description,
                 'date' => $word->created_at->toFormattedDateString(),
                 'examples' => optional($definition)->examples,
-                'title' => $word->title
+                'title' => $word->title,
+                'editable' => auth()->id() == $word->user_id
             ];
         });
     }

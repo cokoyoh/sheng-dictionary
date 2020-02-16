@@ -14,4 +14,9 @@ class ManageWordsPolicy
     {
         return $authUser->id == $word->user_id;
     }
+
+    public function updateWord(User $user, Word $word)
+    {
+        return $user->id == $word->user_id;
+    }
 }

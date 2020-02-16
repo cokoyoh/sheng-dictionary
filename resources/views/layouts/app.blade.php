@@ -30,7 +30,7 @@
                             @endif
                         @else
                             <div class="block mr-2">
-                                <a href="#">
+                                <a href="{!! route('words.create') !!}">
                                     <button class="focus:outline-none rounded-full bg-transparent border border-gray-400 ml-3 hover:bg-gray-100 active:bg-gray-200">
                                         <svg class="h-8 w-8 fill-current text-gray-600"
                                              viewBox="0 0 24 24">
