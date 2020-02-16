@@ -33,7 +33,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $words = $this->getWords();
+        $words = $this->wordsTransformer->transformCollection(Word::paginate(20));
 
         return view('home', [
             'words' => $words
@@ -42,27 +42,10 @@ class HomeController extends Controller
 
     public function landing()
     {
-        $words = $this->getWords();
+        $words = $this->wordsTransformer->transformCollection(Word::paginate(20));
 
         return view('welcome', [
             'words' => $words
         ]);
-    }
-
-    private function getWords()
-    {
-        return Word::latest()->take(20)->get()->map(function ($word) {
-            $definition = $word->definition;
-
-            return [
-                'id' => $word->id,
-                'user' => $word->user->name,
-                'description' =>  optional($definition)->description,
-                'date' => $word->created_at->toFormattedDateString(),
-                'examples' => optional($definition)->examples,
-                'title' => $word->title,
-                'editable' => auth()->id() == $word->user_id
-            ];
-        });
     }
 }

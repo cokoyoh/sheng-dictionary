@@ -211,7 +211,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "word-definition",
-  props: ['word'],
+  props: {
+    word: {
+      type: Array,
+      "default": []
+    }
+  },
   data: function data() {
     return {
       likes: 0,
