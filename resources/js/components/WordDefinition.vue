@@ -1,6 +1,25 @@
 <template>
     <div id="word" class="bg-white px-5 py-8 pb-12 rounded shadow tracking-wide leading-6 text-sm cursor-pointer mb-3">
-        <h3 class="text-blue-600 focus:underline font-bold hover:underline text-xl">{{word.title}}</h3>
+        <div class="flex items-center justify-between">
+            <h3 class="text-blue-600 focus:underline font-bold hover:underline text-xl">{{word.title}}</h3>
+
+            <dropdown v-if="word.editable">
+                <template v-slot:trigger>
+                    <button
+                        class="focus:outline-none rounded-full bg-transparent  ml-3 hover:bg-gray-100 active:bg-gray-200"
+                    >
+                        <svg class="h-5 w-5 fill-current text-gray-700"
+                             :class="{'text-gray-700' : word.editable}"
+                             viewBox="0 0 24 24">
+                            <path d="M10 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+                        </svg>
+                    </button>
+                </template>
+
+                <li class="dropdown-menu-item" v-if="word.editable" @click="edit(word)">Edit</li>
+            </dropdown>
+
+        </div>
         <div class="text-gray-800 mt-2 break-words">
            <pre>{{word.description}}</pre>
         </div>
@@ -84,6 +103,10 @@
                     this.voted = 'dislike';
                 }
             },
+
+            edit(word) {
+                location.href = '/words/create/' + word.id
+            }
         },
     }
 </script>

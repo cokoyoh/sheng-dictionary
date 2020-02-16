@@ -12,11 +12,13 @@ class WordTransformer extends Transformer
         $definition = $word->definition;
 
          return [
+             'id' => $word->id,
              'user' => $word->user->name,
              'description' =>  optional($definition)->description,
              'date' => $word->created_at->toFormattedDateString(),
              'examples' => optional($definition)->examples,
-             'title' => optional($definition)->title
+             'title' => optional($definition)->title,
+             'editable' => auth()->id() == $word->user_id
          ];
     }
 }

@@ -190,6 +190,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "word-definition",
   props: ['word'],
@@ -228,6 +247,9 @@ __webpack_require__.r(__webpack_exports__);
         this.dislikes++;
         this.voted = 'dislike';
       }
+    },
+    edit: function edit(word) {
+      location.href = '/words/create/' + word.id;
     }
   }
 });
@@ -1435,12 +1457,87 @@ var render = function() {
     },
     [
       _c(
-        "h3",
-        {
-          staticClass:
-            "text-blue-600 focus:underline font-bold hover:underline text-xl"
-        },
-        [_vm._v(_vm._s(_vm.word.title))]
+        "div",
+        { staticClass: "flex items-center justify-between" },
+        [
+          _c(
+            "h3",
+            {
+              staticClass:
+                "text-blue-600 focus:underline font-bold hover:underline text-xl"
+            },
+            [_vm._v(_vm._s(_vm.word.title))]
+          ),
+          _vm._v(" "),
+          _vm.word.editable
+            ? _c(
+                "dropdown",
+                {
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "trigger",
+                        fn: function() {
+                          return [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "focus:outline-none rounded-full bg-transparent  ml-3 hover:bg-gray-100 active:bg-gray-200"
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "h-5 w-5 fill-current text-gray-700",
+                                    class: {
+                                      "text-gray-700": _vm.word.editable
+                                    },
+                                    attrs: { viewBox: "0 0 24 24" }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M10 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        },
+                        proxy: true
+                      }
+                    ],
+                    null,
+                    false,
+                    2836547361
+                  )
+                },
+                [
+                  _vm._v(" "),
+                  _vm.word.editable
+                    ? _c(
+                        "li",
+                        {
+                          staticClass: "dropdown-menu-item",
+                          on: {
+                            click: function($event) {
+                              return _vm.edit(_vm.word)
+                            }
+                          }
+                        },
+                        [_vm._v("Edit")]
+                      )
+                    : _vm._e()
+                ]
+              )
+            : _vm._e()
+        ],
+        1
       ),
       _vm._v(" "),
       _c("div", { staticClass: "text-gray-800 mt-2 break-words" }, [
