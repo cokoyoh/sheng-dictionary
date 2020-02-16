@@ -1,6 +1,8 @@
 <template>
-    <div id="words">
+    <div id="words" class="mb-5">
         <word-definition v-for="(word, index) in items" :word="word" :key="word.id"></word-definition>
+
+        <paginator :dataSet="dataSet"></paginator>
     </div>
 </template>
 
