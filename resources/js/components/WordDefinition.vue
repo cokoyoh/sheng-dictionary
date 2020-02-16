@@ -63,7 +63,12 @@
     export default {
         name: "word-definition",
 
-        props: ['word'],
+        props: {
+            word: {
+                type: Object,
+                default: {},
+            }
+        },
 
         data() {
           return {
