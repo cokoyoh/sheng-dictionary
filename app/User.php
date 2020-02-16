@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar_url'
     ];
 
     /**
@@ -55,5 +55,10 @@ class User extends Authenticatable
     public function addWord(array $attributes)
     {
         return $this->words()->create($attributes);
+    }
+
+    public function getAvatarAttribute()
+    {
+        return $this->avatar_url;
     }
 }

@@ -1,0 +1,23 @@
+.dropdown-trigger {
+    @apply bg-transparent;
+}
+
+.dropdown-trigger:active {
+    @apply bg-transparent;
+}
+
+.dropdown-menu {
+    @apply absolute bg-gray-100 mt-2 py-2 rounded shadow text-gray-900 text-xs z-10;
+}
+
+.dropdown-menu-item {
+    @apply pl-2 pr-8 text-xs block leading-loose;
+}
+
+.dropdown-menu-item:hover {
+    @apply bg-gray-200;
+}
+
+.dropdown-menu-item:active {
+    @apply bg-gray-300;
+}

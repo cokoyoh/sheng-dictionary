@@ -31,6 +31,7 @@ class UsersRepository
         $user = $this->save([
             'email' => $providerUserEmail,
             'name' => $providerUser->getName() ?? $providerUser->getNickname(),
+            'avatar_url' => $providerUser->getAvatar()
         ]);
 
         if($providerUserEmail) {
