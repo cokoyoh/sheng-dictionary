@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
 
         /*

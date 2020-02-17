@@ -35,6 +35,10 @@ class HomeController extends Controller
     {
         $words = $this->wordsTransformer->transformCollection(Word::paginate(20));
 
+//        $wordsSearched = $this->wordsTransformer->transformCollection( Word::search('Algolia')->paginate(10));
+
+//        dd($words, $wordsSearched);
+
         return view('home', [
             'words' => $words
         ]);

@@ -10,6 +10,7 @@ export default  {
     created() {
         this.fetch();
         Event.listen('nextPageRequested', page => this.fetch(page));
+        Event.listen('search-word', searchString => this.search(searchString))
     },
 
     methods: {
@@ -23,5 +24,14 @@ export default  {
 
             this.items = data.data;
         },
+
+        search(searchString) {
+            axios.post('/search', {searchString})
+                .then(response => {
+                    this.dataSet = response.data;
+
+                    this.items = response.data.data;
+                });
+        }
     }
 }

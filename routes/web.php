@@ -35,3 +35,4 @@ Route::get('/words/{id}', 'WordsController@show')->name('words.show');
 
 //Public Routes
 Route::get('apis/words', 'Apis\WordsController@getWords');
+Route::post('/search', 'Apis\SearchController@index')->name('search');
