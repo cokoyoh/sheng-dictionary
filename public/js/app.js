@@ -2133,20 +2133,21 @@ __webpack_require__.r(__webpack_exports__);
       if (!vote) {
         this.likes++;
         this.voted = 'like';
+        this.countVote(this.voted);
       }
 
       if (vote && vote === 'dislike') {
         this.likes++;
         this.dislikes--;
         this.voted = 'like';
+        this.countVote(this.voted);
       }
 
       if (vote && vote === 'like') {
         this.likes--;
         this.voted = 'like';
+        this.countVote(this.voted);
       }
-
-      this.countVote(this.voted);
     },
     disliked: function disliked() {
       var vote = this.voted;
@@ -2155,19 +2156,20 @@ __webpack_require__.r(__webpack_exports__);
         this.likes--;
         this.dislikes++;
         this.voted = 'dislike';
+        this.countVote(this.voted);
       }
 
       if (vote && vote === 'dislike') {
         this.dislikes--;
         this.voted = 'dislike';
+        this.countVote(this.voted);
       }
 
       if (!vote) {
         this.dislikes++;
         this.voted = 'dislike';
+        this.countVote(this.voted);
       }
-
-      this.countVote(this.voted);
     },
     edit: function edit(word) {
       location.href = '/words/create/' + word.id;
