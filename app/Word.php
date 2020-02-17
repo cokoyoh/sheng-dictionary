@@ -2,12 +2,14 @@
 
 namespace App;
 
+use App\Sheng\Transformers\WordTransformer;
 use App\Traits\ManageVotes;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Word extends Model
 {
-    use ManageVotes;
+    use Searchable, ManageVotes;
 
     protected $table = 'words';
 
@@ -36,5 +38,10 @@ class Word extends Model
     public function dislikes()
     {
         return $this->hasMany(Dislike::class);
+    }
+
+    public function toSearchableArray()
+    {
+        return (new WordTransformer())->transform($this);
     }
 }
