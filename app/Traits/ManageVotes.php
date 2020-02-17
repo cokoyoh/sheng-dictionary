@@ -17,7 +17,7 @@ trait ManageVotes
         $previousDislike = $this->userVotesBuilder('dislikes');
 
         if ($previousDislike->exists()) {
-            return $previousDislike->delete();
+            $previousDislike->delete();
         }
 
         return $this->likes()->create(['user_id' => auth()->id()]);
@@ -34,7 +34,7 @@ trait ManageVotes
         $previousLike = $this->userVotesBuilder('likes');
 
         if ($previousLike->exists()) {
-            return $previousLike->delete();
+            $previousLike->delete();
         }
 
         return $this->dislikes()->create(['user_id' => auth()->id()]);
