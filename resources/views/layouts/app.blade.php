@@ -31,6 +31,7 @@
                             </span>
                                 <input type="text"
                                        v-model="searchString"
+                                       @keyup.enter="search"
                                        name="search"
                                        placeholder="Search here"
                                        class="block w-full placeholder-gray-600 bg-white text-gray-800 rounded-full border border-gray-400

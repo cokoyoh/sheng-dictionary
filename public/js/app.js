@@ -2056,6 +2056,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       searchString: ''
     };
+  },
+  methods: {
+    search: function search() {
+      Event.fire('search-word', this.searchString);
+    }
   }
 });
 
@@ -16462,6 +16467,9 @@ __webpack_require__.r(__webpack_exports__);
     Event.listen('nextPageRequested', function (page) {
       return _this.fetch(page);
     });
+    Event.listen('search-word', function (searchString) {
+      return _this.search(searchString);
+    });
   },
   methods: {
     fetch: function fetch() {
@@ -16472,6 +16480,16 @@ __webpack_require__.r(__webpack_exports__);
       var data = _ref.data;
       this.dataSet = data;
       this.items = data.data;
+    },
+    search: function search(searchString) {
+      var _this2 = this;
+
+      axios.post('/search', {
+        searchString: searchString
+      }).then(function (response) {
+        _this2.dataSet = response.data;
+        _this2.items = response.data.data;
+      });
     }
   }
 });

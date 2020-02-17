@@ -7,6 +7,12 @@
                 searchString: ''
             }
         },
+
+        methods: {
+            search() {
+                Event.fire('search-word', this.searchString);
+            }
+        }
     }
 </script>
 
