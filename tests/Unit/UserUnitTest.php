@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\User;
 use App\Word;
+use Facades\Tests\Setup\WordFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Facades\Tests\Setup\UserFactory;
 use Tests\TestCase;
@@ -47,5 +48,17 @@ class UserUnitTest extends TestCase
         $user = create(User::class);
 
         $this->assertNotNull($user->avatar);
+    }
+
+    /** @test */
+    public function it_fetches_a_users_latest_vote_for_a_given_word()
+    {
+        $user = $this->signIn();
+
+        $word = WordFactory::addedBy($user)->liked()->create(); //the user liked a word they created
+
+        $vote = $user->getVoteFor($word);
+
+        $this->assertEquals('like', $vote);
     }
 }

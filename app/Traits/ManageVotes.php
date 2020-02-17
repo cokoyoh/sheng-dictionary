@@ -8,13 +8,40 @@ trait ManageVotes
 {
     public function liked()
     {
-        $this->likes()
-            ->create(['user_id' => auth()->id()]);
+        $previousLike = $this->userVotesBuilder('likes');
+
+        if ($previousLike->exists()) {
+            return $previousLike->delete();
+        }
+
+        $previousDislike = $this->userVotesBuilder('dislikes');
+
+        if ($previousDislike->exists()) {
+            $previousDislike->delete();
+        }
+
+        return $this->likes()->create(['user_id' => auth()->id()]);
     }
 
     public function disliked()
     {
-        $this->dislikes()
-            ->create(['user_id' => auth()->id()]);
+        $previousDislike = $this->userVotesBuilder('dislikes');
+
+        if ($previousDislike->exists()) {
+            return $previousDislike->delete();
+        }
+
+        $previousLike = $this->userVotesBuilder('likes');
+
+        if ($previousLike->exists()) {
+            $previousLike->delete();
+        }
+
+        return $this->dislikes()->create(['user_id' => auth()->id()]);
+    }
+
+    private function userVotesBuilder($votes)
+    {
+        return $this->$votes()->where('user_id', auth()->id());
     }
 }

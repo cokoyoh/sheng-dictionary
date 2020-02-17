@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Apis\ApiController;
 use App\Word;
 
-class VotesController extends Controller
+class VotesController extends ApiController
 {
     public function like(Word $word)
     {
         $word->liked();
 
-        return redirect('/');
+        return $this->respondSuccess(['message' => 'word was liked']);
     }
 
     public function dislike(Word $word)
     {
         $word->disliked();
 
-        return redirect('/');
+        return $this->respondSuccess(['message' => 'word was disliked']);
     }
 }
