@@ -32,7 +32,7 @@
         </div>
         <div class="flex items-center justify-around w-1/2 mt-5 relative">
             <div @click="liked"
-                 :class="{'border border-green-400': voted === 'like'}"
+                 :class="{'border-2 border-green-400': voted === 'like'}"
                 class="flex items-center shadow px-2 py-1 rounded-full cursor-pointer w-3/12">
                 <svg viewBox="0 0 20 20"
                      :class="{'text-green-600 border-white': voted === 'like'}"
@@ -44,7 +44,7 @@
             </div>
 
             <div  @click="disliked"
-                  :class="{'border border-red-400': voted === 'dislike'}"
+                  :class="{'border-2 border-red-400': voted === 'dislike'}"
                 class="flex items-center shadow px-2 py-1 rounded-full cursor-pointer w-3/12">
                 <svg viewBox="0 0 20 20"
                      :class="{'text-red-600 border-white': voted === 'dislike'}"
@@ -73,9 +73,25 @@
         data() {
           return {
               likes: this.word.likes ||  0,
-              dislikes: 0,
-              voted: null,
+              dislikes: this.word.dislikes || 0,
+              voted: this.word.voted || null,
           };
+        },
+
+        watch: {
+            likes() {
+                if (this.likes <= 0) {
+                    this.likes = 0;
+                    this.voted = null;
+                }
+            },
+
+            dislikes() {
+                if (this.dislikes <= 0) {
+                    this.dislikes = 0;
+                    this.voted = null;
+                }
+            }
         },
 
         methods: {
@@ -85,7 +101,6 @@
                 if (!vote) {
                     this.likes++;
                     this.voted = 'like';
-
                     this.countVote(this.voted);
                 }
 
@@ -93,7 +108,12 @@
                     this.likes++;
                     this.dislikes--;
                     this.voted = 'like';
+                    this.countVote(this.voted);
+                }
 
+                if (vote && vote === 'like') {
+                    this.likes--;
+                    this.voted = 'like';
                     this.countVote(this.voted);
                 }
             },
@@ -104,6 +124,12 @@
                 if (vote && vote === 'like') {
                     this.likes--;
                     this.dislikes++;
+                    this.voted = 'dislike';
+                    this.countVote(this.voted);
+                }
+
+                if (vote && vote === 'dislike') {
+                    this.dislikes--;
                     this.voted = 'dislike';
                     this.countVote(this.voted);
                 }
@@ -120,6 +146,10 @@
             },
 
             countVote(vote) {
+                if (!vote) {
+                    return null;
+                }
+
                 axios.get(`/word/${vote}/${this.word.id}`);
             }
         },

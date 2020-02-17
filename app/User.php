@@ -61,4 +61,21 @@ class User extends Authenticatable
     {
         return $this->avatar_url;
     }
+
+    public function getVoteFor($word)
+    {
+        $like = $word->likes()->where('user_id', $this->id)->exists(); //scope
+
+        if ($like) {
+            return 'like';
+        }
+
+        $dislike = $word->dislikes()->where('user_id', $this->id)->exists();
+
+        if ($dislike) {
+            return 'dislike';
+        }
+
+        return null;
+    }
 }

@@ -2122,9 +2122,23 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       likes: this.word.likes || 0,
-      dislikes: 0,
-      voted: null
+      dislikes: this.word.dislikes || 0,
+      voted: this.word.voted || null
     };
+  },
+  watch: {
+    likes: function likes() {
+      if (this.likes <= 0) {
+        this.likes = 0;
+        this.voted = null;
+      }
+    },
+    dislikes: function dislikes() {
+      if (this.dislikes <= 0) {
+        this.dislikes = 0;
+        this.voted = null;
+      }
+    }
   },
   methods: {
     liked: function liked() {
@@ -2142,6 +2156,12 @@ __webpack_require__.r(__webpack_exports__);
         this.voted = 'like';
         this.countVote(this.voted);
       }
+
+      if (vote && vote === 'like') {
+        this.likes--;
+        this.voted = 'like';
+        this.countVote(this.voted);
+      }
     },
     disliked: function disliked() {
       var vote = this.voted;
@@ -2149,6 +2169,12 @@ __webpack_require__.r(__webpack_exports__);
       if (vote && vote === 'like') {
         this.likes--;
         this.dislikes++;
+        this.voted = 'dislike';
+        this.countVote(this.voted);
+      }
+
+      if (vote && vote === 'dislike') {
+        this.dislikes--;
         this.voted = 'dislike';
         this.countVote(this.voted);
       }
@@ -2163,6 +2189,10 @@ __webpack_require__.r(__webpack_exports__);
       location.href = '/words/create/' + word.id;
     },
     countVote: function countVote(vote) {
+      if (!vote) {
+        return null;
+      }
+
       axios.get("/word/".concat(vote, "/").concat(this.word.id));
     }
   }
@@ -3674,7 +3704,7 @@ var render = function() {
             {
               staticClass:
                 "flex items-center shadow px-2 py-1 rounded-full cursor-pointer w-3/12",
-              class: { "border border-green-400": _vm.voted === "like" },
+              class: { "border-2 border-green-400": _vm.voted === "like" },
               on: { click: _vm.liked }
             },
             [
@@ -3714,7 +3744,7 @@ var render = function() {
             {
               staticClass:
                 "flex items-center shadow px-2 py-1 rounded-full cursor-pointer w-3/12",
-              class: { "border border-red-400": _vm.voted === "dislike" },
+              class: { "border-2 border-red-400": _vm.voted === "dislike" },
               on: { click: _vm.disliked }
             },
             [
