@@ -74,7 +74,7 @@
           return {
               likes: this.word.likes ||  0,
               dislikes: this.word.dislikes || 0,
-              voted: null,
+              voted: this.word.voted || null,
           };
         },
 
@@ -85,17 +85,20 @@
                 if (!vote) {
                     this.likes++;
                     this.voted = 'like';
-
-                    this.countVote(this.voted);
                 }
 
                 if (vote && vote === 'dislike') {
                     this.likes++;
                     this.dislikes--;
                     this.voted = 'like';
-
-                    this.countVote(this.voted);
                 }
+
+                if (vote && vote === 'like') {
+                    this.likes--;
+                    this.voted = 'like';
+                }
+
+                this.countVote(this.voted);
             },
 
             disliked() {
@@ -105,14 +108,19 @@
                     this.likes--;
                     this.dislikes++;
                     this.voted = 'dislike';
-                    this.countVote(this.voted);
+                }
+
+                if (vote && vote === 'dislike') {
+                    this.dislikes--;
+                    this.voted = 'dislike';
                 }
 
                 if (! vote) {
                     this.dislikes++;
                     this.voted = 'dislike';
-                    this.countVote(this.voted);
                 }
+
+                this.countVote(this.voted);
             },
 
             edit(word) {
