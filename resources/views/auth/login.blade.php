@@ -59,7 +59,7 @@
                    </div>
 
                    <div class="text-center mt-6">
-                      <button type="submit" class="w-3/4 bg-gray-900 text-gray-400 rounded-full font-semibold py-3">
+                      <button type="submit" class="w-3/4 focus:outline-none bg-gray-900 text-gray-400 rounded-full font-semibold py-3">
                           {{ __('Login') }}
                       </button>
 

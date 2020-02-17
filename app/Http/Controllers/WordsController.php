@@ -18,7 +18,7 @@ class WordsController extends Controller
     {
         $word = auth()->user()->addWord(\request()->only('title'));
 
-        $input = \request()->only('description');
+        $input = \request()->only('description', 'examples');
 
         $input['word_id'] = $word->id;
 
