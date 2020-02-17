@@ -78,6 +78,22 @@
           };
         },
 
+        watch: {
+            likes() {
+                if (this.likes <= 0) {
+                    this.likes = 0;
+                    this.voted = null;
+                }
+            },
+
+            dislikes() {
+                if (this.dislikes <= 0) {
+                    this.dislikes = 0;
+                    this.voted = null;
+                }
+            }
+        },
+
         methods: {
             liked() {
                 let vote = this.voted;
@@ -130,6 +146,10 @@
             },
 
             countVote(vote) {
+                if (!vote) {
+                    return null;
+                }
+
                 axios.get(`/word/${vote}/${this.word.id}`);
             }
         },

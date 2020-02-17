@@ -2126,6 +2126,20 @@ __webpack_require__.r(__webpack_exports__);
       voted: this.word.voted || null
     };
   },
+  watch: {
+    likes: function likes() {
+      if (this.likes <= 0) {
+        this.likes = 0;
+        this.voted = null;
+      }
+    },
+    dislikes: function dislikes() {
+      if (this.dislikes <= 0) {
+        this.dislikes = 0;
+        this.voted = null;
+      }
+    }
+  },
   methods: {
     liked: function liked() {
       var vote = this.voted;
@@ -2175,6 +2189,10 @@ __webpack_require__.r(__webpack_exports__);
       location.href = '/words/create/' + word.id;
     },
     countVote: function countVote(vote) {
+      if (!vote) {
+        return null;
+      }
+
       axios.get("/word/".concat(vote, "/").concat(this.word.id));
     }
   }
