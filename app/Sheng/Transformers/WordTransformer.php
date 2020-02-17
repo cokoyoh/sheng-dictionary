@@ -21,7 +21,7 @@ class WordTransformer extends Transformer
              'editable' => auth()->id() == $word->user_id,
              'likes' => $this->getTotalLikes($word),
              'dislikes' => $this->getTotalDislikes($word),
-             'voted' => auth()->user()->getVoteFor($word),
+             'voted' => optional(auth()->user())->getVoteFor($word),
          ];
     }
 
