@@ -23,15 +23,20 @@
                         </a>
                     </div>
 
-                    <div class="relative w-2/6">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <svg viewBox="0 0 20 20" class="h-6 w-6 fill-current text-gray-500"><path
-                                    d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path></svg>
-                        </span>
-                            <input type="text" placeholder="Search here"
-                                   class="block w-full placeholder-gray-600 bg-white text-gray-800 rounded-full border border-gray-400
-                                   pr-4 pl-10 py-3 text-md font-normal font-light focus:outline-none focus:text-gray-800">
-                    </div>
+                    <search inline-template>
+                        <div class="relative w-2/6">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg viewBox="0 0 20 20" class="h-6 w-6 fill-current text-gray-500"><path
+                                        d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path></svg>
+                            </span>
+                                <input type="text"
+                                       v-model="searchString"
+                                       name="search"
+                                       placeholder="Search here"
+                                       class="block w-full placeholder-gray-600 bg-white text-gray-800 rounded-full border border-gray-400
+                                       pr-4 pl-10 py-3 text-md font-normal font-light focus:outline-none focus:text-gray-800">
+                        </div>
+                    </search>
 
                     <div class="text-right flex justify-end items-center text-xs text-gray-600">
                         @guest
