@@ -19,12 +19,18 @@ class WordTransformer extends Transformer
              'examples' => optional($definition)->examples,
              'title' => $word->title,
              'editable' => auth()->id() == $word->user_id,
-             'likes' => $this->getTotalLikes($word)
+             'likes' => $this->getTotalLikes($word),
+             'dislikes' => $this->getTotalDislikes($word)
          ];
     }
 
     private function getTotalLikes($word)
     {
         return $word->likes()->count();
+    }
+
+    private function getTotalDislikes($word)
+    {
+        return $word->dislikes()->count();
     }
 }

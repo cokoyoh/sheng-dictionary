@@ -2122,7 +2122,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       likes: this.word.likes || 0,
-      dislikes: 0,
+      dislikes: this.word.dislikes || 0,
       voted: null
     };
   },
@@ -3674,7 +3674,7 @@ var render = function() {
             {
               staticClass:
                 "flex items-center shadow px-2 py-1 rounded-full cursor-pointer w-3/12",
-              class: { "border border-green-400": _vm.voted === "like" },
+              class: { "border-2 border-green-400": _vm.voted === "like" },
               on: { click: _vm.liked }
             },
             [
@@ -3714,7 +3714,7 @@ var render = function() {
             {
               staticClass:
                 "flex items-center shadow px-2 py-1 rounded-full cursor-pointer w-3/12",
-              class: { "border border-red-400": _vm.voted === "dislike" },
+              class: { "border-2 border-red-400": _vm.voted === "dislike" },
               on: { click: _vm.disliked }
             },
             [
