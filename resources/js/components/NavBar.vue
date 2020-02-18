@@ -3,7 +3,9 @@
         name: "nav-bar",
 
         data() {
-            return {}
-        }
+            return {
+                isOpen: false
+            }
+        },
     }
 </script>
