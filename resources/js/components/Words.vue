@@ -3,6 +3,12 @@
         <word-definition v-for="(word, index) in items" :word="word" :key="word.id"></word-definition>
 
         <paginator :dataSet="dataSet"></paginator>
+
+        <empty
+            v-show="items.length < 1"
+            message="Word Not found! You can define it though."
+            :algolia="true"
+        ></empty>
     </div>
 </template>
 
