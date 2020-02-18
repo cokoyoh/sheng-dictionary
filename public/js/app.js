@@ -21443,7 +21443,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "bg-white px-5 py-8 pb-12 rounded shadow tracking-wide leading-6 text-sm cursor-pointer mb-3",
+        "bg-white px-5 py-8 pb-12 lg:rounded shadow tracking-wide leading-6 text-sm cursor-pointer lg:mb-3 mb-6",
       attrs: { id: "word" }
     },
     [
@@ -21556,7 +21556,10 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "flex items-center justify-around w-1/2 mt-5 relative" },
+        {
+          staticClass:
+            "flex items-center justify-around lg:w-1/2 w-full  lg:border-t-0 border-t lg:pt-0 pt-4 lg:mb-0 -mb-5 mt-5 relative"
+        },
         [
           _c(
             "div",
