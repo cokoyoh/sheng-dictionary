@@ -3,7 +3,7 @@
 @section('content')
     <div class="h-screen bg-gray-200">
        <div class="flex items-center">
-           <div class="w-1/2 px-24">
+           <div class="lg:w-1/2 w-full lg:px-24 sm:px-20 sm:py-8">
                <div class="text-gray-900 text-4xl font-medium text-center">
                    <h3>Which word do you want to define today?</h3>
                </div>
@@ -82,7 +82,7 @@
                    </div>
                </form>
            </div>
-           <div class="w-1/2">
+           <div class="hidden lg:block lg:w-1/2">
                <img src="/images/sit-or-shit.jpg" class="h-screen w-full object-cover" alt="Image">
            </div>
        </div>
