@@ -2,8 +2,9 @@
 1. If a user likes a word they disliked or vice-versa, delete the vote and add on the other end - Done!!!
 2. Search the words - Done!!
 3. Do anonymous voting
-4. Responsiveness and redesign of the mobile page for the login view - halwafway there....
+4. Responsiveness and redesign of the mobile page for the login view -  Done!!....
 5. Design the register page
+6. Reindex the pages twice a day in algolia search or once a word is defined.
 
 //Todo after launch
 1. Words can be categorised

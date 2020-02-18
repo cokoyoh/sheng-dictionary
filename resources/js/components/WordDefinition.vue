@@ -1,5 +1,5 @@
 <template>
-    <div id="word" class="bg-white px-5 py-8 pb-12 rounded shadow tracking-wide leading-6 text-sm cursor-pointer mb-3">
+    <div id="word" class="bg-white px-5 py-8 pb-12 lg:rounded shadow tracking-wide leading-6 text-sm cursor-pointer lg:mb-3 mb-6">
         <div class="flex items-center justify-between">
             <h3 class="text-blue-600 focus:underline font-bold hover:underline text-xl">{{word.title}}</h3>
 
@@ -30,7 +30,7 @@
         <div class="mt-5 ml-2 text-xs text-gray-600">
             @<span class="text-blue-600 font-semibold">{{word.user}}</span> <span class="text-gray-700 font-normal">{{word.date}}</span>
         </div>
-        <div class="flex items-center justify-around w-1/2 mt-5 relative">
+        <div class="flex items-center justify-around lg:w-1/2 w-full  lg:border-t-0 border-t lg:pt-0 pt-4 lg:mb-0 -mb-5 mt-5 relative">
             <div @click="liked"
                  :class="{'border-2 border-green-400': voted === 'like'}"
                 class="flex items-center shadow px-2 py-1 rounded-full cursor-pointer w-3/12">
