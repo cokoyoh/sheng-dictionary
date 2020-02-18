@@ -7,6 +7,7 @@ import Dropdown from '../components/Dropdown'
 import Paginator from '../components/Paginator'
 import Search from '../components/Search'
 import Empty from '../components/Empty'
+import NavBar from '../components/NavBar'
 
 
 
@@ -16,6 +17,7 @@ Vue.component('dropdown', Dropdown);
 Vue.component('paginator', Paginator);
 Vue.component('search', Search);
 Vue.component('empty', Empty);
+Vue.component('nav-bar', NavBar);
 
 
 
