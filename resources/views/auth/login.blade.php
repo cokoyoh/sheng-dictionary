@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="h-screen bg-gray-200">
+    <div class="h-screen bg-gray-200 lg:p-0 lg:px-0 pt-10 px-5">
        <div class="flex items-center">
            <div class="lg:w-1/2 w-full lg:px-24 sm:px-20 sm:py-8">
-               <div class="text-gray-900 text-4xl font-medium text-center">
+               <div class="text-gray-900 lg:text-4xl sm:text-2xl font-medium text-center">
                    <h3>Which word do you want to define today?</h3>
                </div>
 
