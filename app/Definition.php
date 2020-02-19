@@ -10,6 +10,8 @@ class Definition extends Model
 
     protected $guarded = [];
 
+    protected $touches = ['word'];
+
     public function word()
     {
         return $this->belongsTo(Word::class);
