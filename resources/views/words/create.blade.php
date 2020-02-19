@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto h-screen mt-5">
-        <div class="w-2/3 mx-auto bg-white p-6 px-6 rounded">
+    <div class="lg:container lg:mx-auto mx-2 h-screen mt-5">
+        <div class="lg:w-1/2 w-full mx-auto bg-white p-6 px-6 rounded">
             <h1 class="text-2xl font-normal text-center">Define a new word</h1>
             <form method="post"
                   @if($word->id)
