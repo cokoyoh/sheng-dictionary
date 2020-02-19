@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="lg:container lg:mx-auto mx-2 h-screen mt-5">
+    <div class="lg:container lg:mx-auto mb-5 mx-2 mt-5">
         <div class="lg:w-1/2 w-full mx-auto bg-white p-6 px-6 rounded">
             <h1 class="text-2xl font-normal text-center">Define a new word</h1>
             <form method="post"
