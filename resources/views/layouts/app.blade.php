@@ -101,7 +101,7 @@
                         </div>
 
                         <div :class="isOpen ? 'block' : 'hidden'"
-                             class="lg:hidden mt-1 flex flex-col text-gray-600  text-xs block text-gray-800 font-semibold">
+                             class="lg:hidden mt-1 flex flex-col text-gray-600 bg-gray-100 text-xs block text-gray-800 font-semibold">
                             @guest
                                 <a href="{!! route('login') !!}"
                                    class="hover:bg-gray-200 rounded px-2 py-2">{{ __('Login') }}</a>
@@ -112,7 +112,7 @@
                                     </a>
                                 @endif
                                 @else
-                                <a href="#" class="hover:bg-gray-200 rounded px-2 py-2">{!! auth()->user()->name !!}</a>
+                                <a href="{!! route('words.create') !!}" class="hover:bg-gray-200 rounded px-2 py-2">Add Definition</a>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"
