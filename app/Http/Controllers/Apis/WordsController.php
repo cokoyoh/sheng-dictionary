@@ -23,7 +23,7 @@ class WordsController extends ApiController
 
     public function getWords()
     {
-        $paginatedWords = Word::latest()->paginate(20);
+        $paginatedWords = Word::latest()->paginate(10);
 
         $words = $this->wordsTransformer->transformCollection($paginatedWords);
 
