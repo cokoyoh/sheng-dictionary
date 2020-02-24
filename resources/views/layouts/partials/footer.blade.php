@@ -1,4 +1,4 @@
-<div id="footer" class="lg:mx-10 mx-0 border-t lg:p-10 p-2 lg:mt-5 mt-0 lg:text-sm sm:text-xs text-blue-700 font-normal">
+<div id="footer" class="lg:mx-10 mx-0 border-t lg:p-10 p-2 lg:mt-5 mt-0 lg:text-sm text-xs text-blue-700 font-normal">
     <div class="hidden lg:block">
        <div class="flex items-center justify-between">
            <span class="text-gray-700"> &copy; {!! now()->year !!} Sheng Slang, Inc</span>
