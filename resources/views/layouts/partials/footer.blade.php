@@ -16,6 +16,4 @@
             <a class="hover:underline cursor-pointer" href="#">Security </a>
         </div>
     </div>
-
-
 </div>

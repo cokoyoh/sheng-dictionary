@@ -10,6 +10,7 @@
                 v-show="isOpen"
                 aria-haspopup="true"
                 :aria-expanded="isOpen"
+                :class="align === 'left' ? 'text-align-left' : 'text-align-right'"
             >
                 <slot></slot>
             </ul>
@@ -20,6 +21,10 @@
 <script>
     export default {
         name: "dropdown",
+
+        props: {
+          align: { default: 'left'}
+        },
 
         data() {
             return {
