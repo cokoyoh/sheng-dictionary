@@ -10,7 +10,16 @@
 1. Words can be categorised
 2. The paginator should display more tabs if there are more pages to view
 3. If a word is not defined, and the search says that the word is not found, then you can be redirected to login page to define the word
-4. Make the descision to only do thumbs up/down for words when users are logged in
+4. Make the decision to only do thumbs up/down for words when users are logged in
 5. Delete words
-6. Show other words with similar meanings or related
+6. Show other words with similar meanings or related - can only be done once words can be categorised
+7. Remove/hide the search bar on the login/register page
+8. What happens when a words definition is longer? Should all the cards look similar and only expand when a user clicks on <see more> for example?
+8. Not sure if edit words is in already
+
+//Todo CI/CD Stuff
+1. Configure jenkins to trigger launch (CI/CD stuff)
+2. Restrict push to master unless a branch has been approved and passes build configs
+3. Generally automate deployment
+4. Redo the READme.md file to include all important aspects of the project
 
