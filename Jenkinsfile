@@ -6,7 +6,7 @@ pipeline {
       sh 'npm run prod'
     }
 
-    stage('Test') {
+    stage('Test') { 
       sh 'npm run test'
     }
   }
