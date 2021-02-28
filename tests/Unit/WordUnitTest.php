@@ -17,8 +17,8 @@ class WordUnitTest extends TestCase
     public function a_word_has_a_definition()
     {
         $word = WordFactory::withDefinitions(1)->create();
-
-        $this->assertInstanceOf(Definition::class, $word->definition);
+        
+        $this->assertInstanceOf(Definition::class, $word->definition()->first());
     }
 
     /** @test */
@@ -30,7 +30,7 @@ class WordUnitTest extends TestCase
             'description' => 'hocus pocus is just meaningless word!'
         ]);
 
-        $this->assertInstanceOf(Definition::class, $word->definition);
+        $this->assertInstanceOf(Definition::class, $word->definition()->first());
     }
 
     /** @test */
