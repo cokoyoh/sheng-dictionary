@@ -18,7 +18,7 @@ class ManageVotesTest extends TestCase
 
         $this->actingAs(create(User::class))
             ->get(route('words.like', $word))
-            ->assertRedirect();
+            ->assertSuccessful();
 
         $this->assertCount(1, $word->likes);
     }
@@ -30,7 +30,7 @@ class ManageVotesTest extends TestCase
 
         $this->actingAs(create(User::class))
             ->get(route('words.dislike', $word))
-            ->assertRedirect();
+            ->assertSuccessful();
 
         $this->assertCount(1, $word->dislikes);
     }
