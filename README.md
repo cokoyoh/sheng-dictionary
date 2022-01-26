@@ -10,7 +10,7 @@ Well, it's time we defined these words. For posterity. I call dibs on #Doktari. 
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Sheng Slang, please send an e-mail to Charles Okoyoh via [cokoyoh.dev@gmail.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Sheng Slang, please send an e-mail to Charles Okoyoh via [cokoyoh.dev@gmail.com](mailto:cokoyoh.dev@gmail.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
